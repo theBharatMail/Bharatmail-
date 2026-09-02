@@ -1,5 +1,4 @@
-<p align="center">
-  <img src="https://avatars.githubusercontent.com/u/233336000?s=200" width="120" />
+ src="https://avatars.githubusercontent.com/u/233336000?s=200" width="120" />
 </p>
 
 # The BharatMail 🇮🇳
