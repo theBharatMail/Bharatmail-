@@ -5,29 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BharatMail - Ek Bharat, Ek Mail</title>
 <style>
-body{font-family:sans-serif;margin:0;background:#fff;color:#1a1a6c;}
-header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;border-bottom:1px solid #eee;}
-.logo{font-weight:800;font-size:20px;}
-.btn{padding:10px 18px;border-radius:8px;border:1px solid #0052cc;background:#fff;color:#0052cc;font-weight:bold;}
-.btn-blue{background:#0052cc;color:#fff;}
-.hero{padding:40px 20px;}
-.hero h1{font-size:44px;margin:0;line-height:1.1;}
-.hero p{color:#555;font-size:18px;}
-.features{padding:20px;display:grid;gap:12px;}
-.feat{border:1px solid #eee;padding:20px;border-radius:12px;text-align:center;}
+*{box-sizing:border-box}body{font-family:Inter,sans-serif;margin:0;background:#fff;color:#1a1a6c}
+header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:10}
+.logo{font-weight:800;font-size:22px;color:#1a1a6c}
+.btn{padding:10px 18px;border-radius:8px;border:1.5px solid #0052cc;background:#fff;color:#0052cc;font-weight:bold;cursor:pointer}
+.btn-blue{background:#0052cc;color:#fff}
+.hero{padding:40px 20px}
+.hero h1{font-size:48px;margin:0;line-height:1}
+.hero p{color:#555;font-size:18px}
+.features{padding:20px;display:grid;gap:12px}
+.feat{border:1px solid #eee;padding:20px;border-radius:12px;text-align:center}
+#authModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:100;justify-content:center;align-items:center}
+.modal{background:#fff;padding:25px;border-radius:16px;width:90%;max-width:360px}
+.modal input{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px}
+#inbox{display:none;min-height:100vh;background:#f5f7ff}
+.inbox-header{background:#1a1a6c;color:#fff;padding:15px;display:flex;justify-content:space-between}
+.email-item{background:#fff;margin:10px;padding:15px;border-radius:10px;border:1px solid #e5e7eb}
 </style>
 </head>
 <body>
+<div id="landing">
 <header>
 <div class="logo">BharatMail</div>
-<div><button class="btn">Login</button> <button class="btn btn-blue">Sign up</button></div>
+<div><button class="btn" onclick="openAuth('login')">Login</button> <button class="btn btn-blue" onclick="openAuth('signup')">Sign up</button></div>
 </header>
 <div class="hero">
 <h1>Ek Bharat,<br>Ek Mail</h1>
 <p>Secure, private email built for India — fast, reliable, and yours.</p>
 <div style="margin-top:20px;display:flex;gap:10px;">
-<button class="btn btn-blue">Sign up free</button>
-<button class="btn">Login</button>
+<button class="btn btn-blue" onclick="openAuth('signup')">Sign up free</button>
+<button class="btn" onclick="openAuth('login')">Login</button>
 </div>
 <p style="font-size:13px;margin-top:15px;">✅ No ads | 🔒 Encryption | 📍 Data in India</p>
 </div>
@@ -36,6 +43,49 @@ header{display:flex;justify-content:space-between;align-items:center;padding:15p
 <div class="feat"><h3>Built in India</h3><p>Data stored in India</p></div>
 <div class="feat"><h3>Fast & Reliable</h3><p>25GB free, spam protection</p></div>
 </div>
-<p style="text-align:center;padding:20px;color:#888;font-size:12px;">© 2026 BharatMail • Made in India • Class 11th Student</p>
+<p style="text-align:center;padding:20px;color:#888;font-size:12px;">© 2026 BharatMail • Made in India</p>
+</div>
+
+<div id="authModal">
+<div class="modal">
+<h2 id="modalTitle">Create Account</h2>
+<input id="name" type="text" placeholder="Your Name" style="display:none">
+<input id="email" type="text" placeholder="username@bharatmail.in">
+<input id="pass" type="password" placeholder="Password">
+<button class="btn btn-blue" style="width:100%;margin-top:10px" onclick="handleAuth()">Continue</button>
+<p style="text-align:center;font-size:13px;margin-top:10px"><span onclick="closeAuth()" style="color:#888;cursor:pointer">Cancel</span></p>
+</div>
+</div>
+
+<div id="inbox">
+<div class="inbox-header">
+<div><b id="userEmail">user@bharatmail.in</b></div>
+<div style="cursor:pointer" onclick="logout()">Logout</div>
+</div>
+<div style="padding:20px">
+<h2>Inbox (Demo)</h2>
+<div class="email-item"><b>Welcome to BharatMail! 🇮🇳</b><br><small>Team BharatMail • just now</small><br><p>Ek Bharat, Ek Mail me aapka swagat hai! Aapka account ban gaya hai.</p></div>
+<div class="email-item"><b>Your BharatMail is secure 🔒</b><br><small>Security • 2 min ago</small><br><p>Your data is stored in India and encrypted.</p></div>
+<button class="btn btn-blue" style="margin-top:20px" onclick="alert('Compose coming soon!')">+ Compose Mail</button>
+</div>
+</div>
+
+<script>
+let mode='signup';
+function openAuth(m){mode=m;document.getElementById('authModal').style.display='flex';document.getElementById('modalTitle').innerText=m==='signup'?'Create @bharatmail.in Account':'Login to BharatMail';document.getElementById('name').style.display=m==='signup'?'block':'none'}
+function closeAuth(){document.getElementById('authModal').style.display='none'}
+function handleAuth(){
+ let e=document.getElementById('email').value;let p=document.getElementById('pass').value;
+ if(!e||!p){alert('Email aur Password bharo');return}
+ if(!e.includes('@')) e=e+'@bharatmail.in';
+ localStorage.setItem('bm_user',e);
+ document.getElementById('userEmail').innerText=e;
+ document.getElementById('landing').style.display='none';
+ document.getElementById('authModal').style.display='none';
+ document.getElementById('inbox').style.display='block';
+}
+function logout(){localStorage.clear();location.reload()}
+window.onload=()=>{let u=localStorage.getItem('bm_user');if(u){document.getElementById('userEmail').innerText=u;document.getElementById('landing').style.display='none';document.getElementById('inbox').style.display='block'}}
+</script>
 </body>
 </html>
