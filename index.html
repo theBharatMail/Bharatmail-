@@ -68,4 +68,74 @@ function logout(){localStorage.clear();location.reload();}
 window.onload=openHome;
 </script>
 </body>
+</html><!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BharatMail</title>
+<link rel="manifest" href="manifest.json">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#f6f8fc}
+.top{height:60px;background:#fff;display:flex;align-items:center;padding:0 16px;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.logo{width:36px;height:36px;background:linear-gradient(135deg,#FF9933,#138808);border-radius:8px;display:grid;place-items:center;color:#fff;font-weight:900}
+.card{max-width:380px;margin:60px auto;background:#fff;padding:24px;border-radius:20px;box-shadow:0 8px 24px rgba(0,0,0,.08);text-align:center}
+input{width:100%;padding:14px;border:1px solid #ddd;border-radius:12px;margin:8px 0}
+button{width:100%;padding:14px;border:0;border-radius:12px;font-weight:700;cursor:pointer}
+.btn-blue{background:#1a73e8;color:#fff}
+.btn-green{background:#138808;color:#fff}
+.otp-box{background:#e8f0fe;padding:12px;border-radius:8px;font-weight:700;letter-spacing:2px;margin:10px 0}
+</style>
+</head>
+<body>
+<div class="top"><div class="logo">B</div><b>BharatMail</b><span id="user" style="margin-left:auto;font-size:12px"></span></div>
+<div id="login" class="card">
+<h2>🇮🇳 BharatMail</h2>
+<p style="color:#666;margin:8px 0 16px">OTP se login</p>
+<input id="email" placeholder="Apna email likho">
+<button class="btn-blue" onclick="sendOTP()" id="btn1">Send OTP</button>
+<div id="step2" style="display:none">
+<div id="otpShow" class="otp-box"></div>
+<input id="otpInput" placeholder="OTP likho">
+<button class="btn-green" onclick="verify()">Verify & Login</button>
+</div>
+</div>
+<div id="home" class="card" style="display:none">
+<h2>✅ Login Ho Gaya!</h2>
+<p id="welcome"></p>
+<button class="btn-blue" style="margin-top:16px" onclick="logout()">Logout</button>
+</div>
+<script>
+emailjs.init('IMPFN0ul238t5pYig');
+let realOTP=''; 
+function sendOTP(){
+let e=document.getElementById('email').value.trim();
+if(!e.includes('@')){alert('Sahi email daalo');return;}
+realOTP=Math.floor(100000+Math.random()*900000)+'';
+document.getElementById('btn1').innerText='Bhej rahe...';
+emailjs.send('service_7lsgfua','template_6vu2qug',{to_email:e,otp_code:realOTP,from_name:'BharatMail'}).then(()=>{showOTP()}).catch(()=>{showOTP()});
+}
+function showOTP(){
+document.getElementById('btn1').innerText='Send OTP';
+document.getElementById('step2').style.display='block';
+document.getElementById('otpShow').innerText='OTP: '+realOTP;
+alert('OTP: '+realOTP);
+}
+function verify(){
+if(document.getElementById('otpInput').value.trim()!==realOTP){alert('Galat OTP! Sahi: '+realOTP);return;}
+localStorage.setItem('bm_user',document.getElementById('email').value.trim());
+openHome();
+}
+function openHome(){
+if(!localStorage.getItem('bm_user'))return;
+document.getElementById('login').style.display='none';
+document.getElementById('home').style.display='block';
+document.getElementById('user').innerText='Logged in as '+localStorage.getItem('bm_user');
+}
+function logout(){localStorage.clear();location.reload();}
+window.onload=openHome;
+</script>
+</body>
 </html>
