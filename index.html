@@ -1,97 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="manifest" href="manifest.json">
-<title>BharatMail - Desh ka Email</title>
+<title>BharatMail</title>
 <style>
-body{margin:0;font-family:sans-serif;background:#f6f8fc}
-.header{padding:14px;background:#fff;display:flex;gap:10px;box-shadow:0 1px 2px #ccc;align-items:center}
-.card{background:#fff;margin:10px;padding:14px;border-radius:12px}
-.btn{position:fixed;bottom:20px;right:20px;background:#0b57d0;color:#fff;padding:14px 22px;border-radius:24px}
-.logo{background:linear-gradient(orange,green);color:#fff;border-radius:8px;padding:8px 12px;font-weight:bold}
+body{margin:0;font-family:system-ui;background:#f2f4f8}
+.header{padding:14px;background:#fff;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px #0001}
+.logo{width:42px;height:42px;background:linear-gradient(180deg,#FF9933,#138808);color:#fff;display:grid;place-items:center;border-radius:12px;font-weight:900;font-size:22px}
+.card{background:#fff;margin:12px;padding:14px;border-radius:14px;box-shadow:0 1px 2px #0001}
+.composeBtn{position:fixed;bottom:22px;right:18px;background:#0b57d0;color:#fff;border:none;padding:14px 24px;border-radius:28px;font-size:16px;font-weight:600;z-index:10}
+#box{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:20px 20px 0 0;padding:16px;box-shadow:0 -4px 20px #0003;z-index:20}
+input,textarea{width:100%;box-sizing:border-box;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:10px;font-size:15px}
+.sendBtn{background:#0b57d0;color:#fff;border:none;padding:12px;width:100%;border-radius:10px;font-size:16px;margin-top:8px}
 </style>
 </head>
 <body>
+
 <div class="header">
 <div class="logo">B</div>
-<div style="font-weight:bold;font-size:20px">BharatMail</div>
+<div style="font-weight:800;font-size:22px">BharatMail</div>
 </div>
+
 <div class="card">🇮🇳 Welcome - BharatMail Team</div>
 <div class="card">📧 Login: ks7370581@gmail.com</div>
 <div class="card">✉️ Inbox (3) mails</div>
-<div class="btn">✏️ Compose</div>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="manifest" href="manifest.json">
-<title>BharatMail - Desh ka Email</title>
-<style>
-body{margin:0;font-family:sans-serif;background:#f6f8fc}
-.header{padding:14px;background:#fff;display:flex;gap:10px;box-shadow:0 1px 2px #ccc;align-items:center}
-.card{background:#fff;margin:10px;padding:14px;border-radius:12px}
-.btn{position:fixed;bottom:20px;right:20px;background:#0b57d0;color:#fff;padding:14px 22px;border-radius:24px}
-.logo{background:linear-gradient(orange,green);color:#fff;border-radius:8px;padding:8px 12px;font-weight:bold}
-</style>
-</head>
-<body>
-<div class="header">
-<div class="logo">B</div>
-<div style="font-weight:bold;font-size:20px">BharatMail</div>
+
+<button class="composeBtn" onclick="openBox()">✏️ Compose</button>
+
+<div id="box">
+<b>New Mail</b>
+<input id="to" placeholder="To">
+<input id="sub" placeholder="Subject">
+<textarea id="msg" rows="4" placeholder="Message..."></textarea>
+<button class="sendBtn" onclick="sendNow()">Send</button>
+<button onclick="closeBox()" style="width:100%;margin-top:8px;padding:10px;background:#eee;border:none;border-radius:10px">Close</button>
 </div>
-<div class="card">🇮🇳 Welcome - BharatMail Team</div>
-<div class="card">📧 Login: ks7370581@gmail.com</div>
-<div class="card">✉️ Inbox (3) mails</div>
-<div class="btn">✏️ Compose</div>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="manifest" href="manifest.json">
-<title>BharatMail - Desh ka Email</title>
-<style>
-body{margin:0;font-family:sans-serif;background:#f6f8fc}
-.header{padding:14px;background:#fff;display:flex;gap:10px;box-shadow:0 1px 2px #ccc;align-items:center}
-.card{background:#fff;margin:10px;padding:14px;border-radius:12px}
-.btn{position:fixed;bottom:20px;right:20px;background:#0b57d0;color:#fff;padding:14px 22px;border-radius:24px}
-.logo{background:linear-gradient(orange,green);color:#fff;border-radius:8px;padding:8px 12px;font-weight:bold}
-</style>
-</head>
-<body>
-<div class="header">
-<div class="logo">B</div>
-<div style="font-weight:bold;font-size:20px">BharatMail</div>
-</div>
-<div class="card">🇮🇳 Welcome - BharatMail Team</div>
-<div class="card">📧 Login: ks7370581@gmail.com</div>
-<div class="card">✉️ Inbox (3) mails</div>
-<div class="btn">✏️ Compose</div>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="manifest" href="manifest.json">
-<title>BharatMail - Desh ka Email</title>
-<style>
-body{margin:0;font-family:sans-serif;background:#f6f8fc}
-.header{padding:14px;background:#fff;display:flex;gap:10px;box-shadow:0 1px 2px #ccc;align-items:center}
-.card{background:#fff;margin:10px;padding:14px;border-radius:12px}
-.btn{position:fixed;bottom:20px;right:20px;background:#0b57d0;color:#fff;padding:14px 22px;border-radius:24px}
-.logo{background:linear-gradient(orange,green);color:#fff;border-radius:8px;padding:8px 12px;font-weight:bold}
-</style>
-</head>
-<body>
-<div class="header">
-<div class="logo">B</div>
-<div style="font-weight:bold;font-size:20px">BharatMail</div>
-</div>
-<div class="card">🇮🇳 Welcome - BharatMail Team</div>
-<div class="card">📧 Login: ks7370581@gmail.com</div>
-<div class="card">✉️ Inbox (3) mails</div>
-<div class="btn">✏️ Compose</div>
+
+<script>
+function openBox(){document.getElementById('box').style.display='block'}
+function closeBox(){document.getElementById('box').style.display='none'}
+function sendNow(){
+let t=document.getElementById('to').value;
+alert('Mail sent to '+t+' ✅ (Demo)');
+closeBox();
+}
+</script>
 </body>
 </html>
