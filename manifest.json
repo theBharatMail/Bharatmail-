@@ -4,7 +4,12 @@
   "start_url": "/Bharatmail-/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#FF9933",
-  "icons": [{"src": "https://cdn-icons-png.flaticon.com/512/5968/5968534.png","sizes": "512x512","type": "image/png"}]
-}{
-  
+  "theme_color": "#0b57d0",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/5968/5968534.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}    
