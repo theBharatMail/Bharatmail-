@@ -3,49 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="manifest" href="manifest.json">
 <title>BharatMail</title>
 <style>
-body{margin:0;font-family:system-ui;background:#f2f4f8}
-.header{padding:14px;background:#fff;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px #0001}
-.logo{width:42px;height:42px;background:linear-gradient(180deg,#FF9933,#138808);color:#fff;display:grid;place-items:center;border-radius:12px;font-weight:900;font-size:22px}
-.card{background:#fff;margin:12px;padding:14px;border-radius:14px;box-shadow:0 1px 2px #0001}
-.composeBtn{position:fixed;bottom:22px;right:18px;background:#0b57d0;color:#fff;border:none;padding:14px 24px;border-radius:28px;font-size:16px;font-weight:600;z-index:10}
-#box{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:20px 20px 0 0;padding:16px;box-shadow:0 -4px 20px #0003;z-index:20}
-input,textarea{width:100%;box-sizing:border-box;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:10px;font-size:15px}
-.sendBtn{background:#0b57d0;color:#fff;border:none;padding:12px;width:100%;border-radius:10px;font-size:16px;margin-top:8px}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f6f8fc;
+}
+.header {
+  background: #ff6a00;
+  color: white;
+  padding: 16px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.mail {
+  background: white;
+  margin: 10px;
+  padding: 12px;
+  border-radius: 10px;
+}
+.compose {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ff6a00;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+}
 </style>
 </head>
 <body>
 
 <div class="header">
-<div class="logo">B</div>
-<div style="font-weight:800;font-size:22px">BharatMail</div>
+  🇮🇳 BharatMail - Inbox
 </div>
 
-<div class="card">🇮🇳 Welcome - BharatMail Team</div>
-<div class="card">📧 Login: ks7370581@gmail.com</div>
-<div class="card">✉️ Inbox (3) mails</div>
-
-<button class="composeBtn" onclick="openBox()">✏️ Compose</button>
-
-<div id="box">
-<b>New Mail</b>
-<input id="to" placeholder="To">
-<input id="sub" placeholder="Subject">
-<textarea id="msg" rows="4" placeholder="Message..."></textarea>
-<button class="sendBtn" onclick="sendNow()">Send</button>
-<button onclick="closeBox()" style="width:100%;margin-top:8px;padding:10px;background:#eee;border:none;border-radius:10px">Close</button>
+<div class="mail">
+  <b>Team BharatMail</b><br>
+  Welcome! App ab ready hai.
 </div>
 
-<script>
-function openBox(){document.getElementById('box').style.display='block'}
-function closeBox(){document.getElementById('box').style.display='none'}
-function sendNow(){
-let t=document.getElementById('to').value;
-alert('Mail sent to '+t+' ✅ (Demo)');
-closeBox();
-}
-</script>
+<div class="mail">
+  <b>Support@BharatMail</b><br>
+  Aapka account active hai.
+</div>
+
+<div class="compose">
+    + Compose
+</div>
+
 </body>
 </html>
