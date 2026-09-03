@@ -1,59 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BharatMail</title>
 <style>
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: #f6f8fc;
-}
-.header {
-  background: #ff6a00;
-  color: white;
-  padding: 16px;
-  font-size: 22px;
-  font-weight: bold;
-}
-.mail {
-  background: white;
-  margin: 10px;
-  padding: 12px;
-  border-radius: 10px;
-}
-.compose {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ff6a00;
-  color: white;
-  padding: 15px 25px;
-  border-radius: 30px;
-  font-weight: bold;
-}
+body{margin:0;font-family:Arial;background:#f6f8fc}
+.h{background:#ff6a00;color:white;padding:15px;font-size:20px;font-weight:bold}
+.mail{background:white;margin:10px;padding:12px;border-radius:8px}
+.btn{position:fixed;bottom:20px;right:20px;background:#ff6a00;color:white;padding:15px 25px;border-radius:30px;font-weight:bold;cursor:pointer}
+#box{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:white;padding:20px;box-sizing:border-box}
+input,textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:5px;box-sizing:border-box}
 </style>
 </head>
 <body>
+<div class="h">🇮🇳 BharatMail</div>
+<div class="mail"><b>Welcome</b><br><small>Aapka inbox ready hai</small></div>
 
-<div class="header">
-  🇮🇳 BharatMail - Inbox
+<div class="btn" onclick="document.getElementById('box').style.display='block'">+ Compose</div>
+
+<div id="box">
+<h3>New Email</h3>
+<input id="to" placeholder="To">
+<input id="sub" placeholder="Subject">
+<textarea id="msg" rows="6" placeholder="Message"></textarea>
+<button onclick="send()" style="background:#ff6a00;color:white;padding:10px 20px;border:none;border-radius:5px;width:100%">Send</button>
+<button onclick="document.getElementById('box').style.display='none'" style="margin-top:10px;width:100%">Close</button>
 </div>
 
-<div class="mail">
-  <b>Team BharatMail</b><br>
-  Welcome! App ab ready hai.
-</div>
-
-<div class="mail">
-  <b>Support@BharatMail</b><br>
-  Aapka account active hai.
-</div>
-
-<div class="compose">
-    + Compose
-</div>
-
+<script>
+function send(){
+  let to=document.getElementById('to').value;
+  let sub=document.getElementById('sub').value;
+  let msg=document.getElementById('msg').value;
+  window.location.href="mailto:"+to+"?subject="+sub+"&body="+msg;
+  alert("BharatMail se bhej diya!");
+  document.getElementById('box').style.display='none';
+}
+</script>
 </body>
 </html>
